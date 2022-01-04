@@ -355,7 +355,7 @@ class CosFileSystem(AbstractedFS):
         logger.info("Current work directory {0}".format(str(self.cwd).encode("utf-8")))
         assert isinstance(path, unicode), path
 
-        if path.startswith("/"):
+        if path.startswith("/") or ':' in path:
             ftp_path = self.fs2ftp(path)
             key_name = ftp_path.strip("/")
 
@@ -381,7 +381,7 @@ class CosFileSystem(AbstractedFS):
         logger.info("Current work directory {0}".format(str(path).encode("utf-8")))
         assert isinstance(path, unicode), path
 
-        if path.startswith("/"):
+        if path.startswith("/") or ':' in path:
             ftp_path = self.fs2ftp(path)
             if ftp_path == "/":  # 根目录
                 return True
@@ -450,7 +450,7 @@ class CosFileSystem(AbstractedFS):
         logger.info("User invoke lexists for {0}".format(str(path).encode("utf-8")))
         ftp_path = self.fs2ftp(path)
 
-        if ftp_path.startswith("/"):
+        if ftp_path.startswith("/") or ':' in path:
             if self.isdir(path) or self.isfile(path):  # 如果路径
                 return True
             else:
