@@ -19,7 +19,7 @@ class CosFtpConfig(object):
     CONFIG_PATH = None
     if platform.system() == "Windows":
         CONFIG_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))) + \
-                      "\\conf\\vsftpd.conf.example"
+                      "\\conf\\vsftpd.conf"
     else:
         CONFIG_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))) + \
                       "/conf/vsftpd.conf"
